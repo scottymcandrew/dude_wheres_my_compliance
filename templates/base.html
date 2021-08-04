@@ -12,10 +12,32 @@
     <title>{% block title %} {% endblock %}</title>
   </head>
   <body>
-    
-    <section class="container-fluid main-content">
-        {% block content %} {% endblock %}
+
+{#  <nav class="navbar navbar-light bg-light">#}
+{#      <div class="container">#}
+{#          <a class="navbar-brand" href="#">#}
+{#              <img src="{{ url_for('static', filename='images/dude_meme.jpg') }}" alt="" width="50" height="70">#}
+{#              Dude, Where's My Compliance?#}
+{#          </a>#}
+{#      </div>#}
+{#  </nav>#}
+
+    <section class="container-fluid mt-3 px-3 main-content">
+        <div class="row">
+            <div class="col-9 main-section">
+                {% block content %} {% endblock %}
+            </div>
+            <div class="col-3 side-section">
+                <h1>Dude, Where's My Compliance?</h1>
+                <p>A one-stop shop for all your Prisma Cloud Compliance needs!</p>
+                <img src="{{ url_for('static', filename='images/dude_meme.jpg') }}" class="img-fluid img-thumbnail title-image" />
+            </div>
+        </div>
     </section>
+    
+{#    <section class="container-fluid main-content">#}
+{#        {% block content %} {% endblock %}#}
+{#    </section>#}
 
 
     <!-- Bootstrap Bundle with Popper -->
