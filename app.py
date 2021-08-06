@@ -11,10 +11,6 @@ pc_secret_key = os.environ.get('PC_SECRET')
 
 
 @app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
-
-
 @app.route("/list-compliance-frameworks")
 def list_compliance_frameworks():
     url = pc_base_url + "/compliance"
@@ -29,17 +25,15 @@ def list_compliance_frameworks():
 
     response = requests.request("GET", url, headers=headers, data=payload)
     resp_json = response.json()
-
     print(resp_json)
 
     return render_template('compliance.html', results=resp_json)
 
 
-@app.route("/list-compliance-reqs")
-def list_compliance_reqs():
-    compliance_standard_id = request.args.get('comp-id')
+@app.route("/list-compliance-reqs/<comp_id>")
+def list_compliance_reqs(comp_id):
 
-    url = pc_base_url + "/compliance/" + compliance_standard_id + "/requirement"
+    url = pc_base_url + "/compliance/" + comp_id + "/requirement"
     pc_session_token = prisma_cloud_get_token()
 
     payload = {}
@@ -51,10 +45,29 @@ def list_compliance_reqs():
 
     response = requests.request("GET", url, headers=headers, data=payload)
     resp_json = response.json()
-
     print(resp_json)
 
     return render_template('compliance-reqs.html', results=resp_json)
+
+
+@app.route("/list-compliance-req-section/<req_id>")
+def list_compliance_req_sections(req_id):
+
+    url = pc_base_url + "/compliance/" + req_id + "/section"
+    pc_session_token = prisma_cloud_get_token()
+
+    payload = {}
+    headers = {
+        'accept': 'application/json; charset=UTF-8',
+        'content-type': 'application/json',
+        'x-redlock-auth': pc_session_token
+    }
+
+    response = requests.request("GET", url, headers=headers, data=payload)
+    resp_json = response.json()
+    print(resp_json)
+
+    return render_template('compliance-req-sections.html', results=resp_json)
 
 
 #### Utility Functions ####

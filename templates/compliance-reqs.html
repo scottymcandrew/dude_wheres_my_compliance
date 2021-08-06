@@ -13,8 +13,7 @@
                     <h6 class="card-subtitle mb-2 text-muted">{{ r['createdBy'] }}</h6>
                     <p class="card-text">Requirement ID: {{ r['requirementId'] }}</p>
                     <p class="card-text">Policies Assigned: {{ r['policiesAssignedCount'] }}</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <a href="{{ url_for('list_compliance_req_sections', req_id=r.id) }}" class="card-link">Sections</a>
                 </div>
             </div>
         {% endfor %}

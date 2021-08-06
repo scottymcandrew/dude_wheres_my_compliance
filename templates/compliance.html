@@ -13,14 +13,10 @@
                     <h6 class="card-subtitle mb-2 text-muted">{{ r['createdBy'] }}</h6>
                     <p class="card-text">Cloud Types: {{ r['cloudType'] }}</p>
                     <p class="card-text">Policies Assigned: {{ r['policiesAssignedCount'] }}</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <a href="{{ url_for('list_compliance_reqs', comp_id=r.id) }}" class="card-link">Requirements</a>
                 </div>
             </div>
         {% endfor %}
-
-        {#        <h1>Results</h1>#}
-        {#        <p>{{ results[0]['description'] }}</p>#}
 
     </div>
 

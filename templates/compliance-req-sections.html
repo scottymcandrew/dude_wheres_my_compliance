@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Dude, Where's My Compliance Requirement Sections?{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+
+        {% for r in results %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ r['description'] }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ r['label'] }}</h6>
+                    <p class="card-text">Policies Assigned: {{ r['policiesAssignedCount'] }}</p>
+                    {% for p in r['associatedPolicyIds'] %}
+                        <a href="#" class="card-link">{{ p }}</a><br>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
