@@ -3,7 +3,6 @@ import os
 import requests
 import json
 
-
 app = Flask(__name__)
 pc_base_url = "https://api.eu.prismacloud.io"
 pc_access_key = os.environ.get('PC_KEY')
@@ -21,7 +20,7 @@ def list_compliance_frameworks():
     url = pc_base_url + "/compliance"
     pc_session_token = prisma_cloud_get_token()
 
-    payload={}
+    payload = {}
     headers = {
         'accept': 'application/json; charset=UTF-8',
         'content-type': 'application/json',
@@ -34,6 +33,28 @@ def list_compliance_frameworks():
     print(resp_json)
 
     return render_template('compliance.html', results=resp_json)
+
+
+@app.route("/list-compliance-reqs")
+def list_compliance_reqs():
+    compliance_standard_id = request.args.get('comp-id')
+
+    url = pc_base_url + "/compliance/" + compliance_standard_id + "/requirement"
+    pc_session_token = prisma_cloud_get_token()
+
+    payload = {}
+    headers = {
+        'accept': 'application/json; charset=UTF-8',
+        'content-type': 'application/json',
+        'x-redlock-auth': pc_session_token
+    }
+
+    response = requests.request("GET", url, headers=headers, data=payload)
+    resp_json = response.json()
+
+    print(resp_json)
+
+    return render_template('compliance-reqs.html', results=resp_json)
 
 
 #### Utility Functions ####
