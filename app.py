@@ -9,9 +9,6 @@ pc_access_key = os.environ.get('PC_KEY')
 pc_secret_key = os.environ.get('PC_SECRET')
 
 
-# pc_session_token = ""
-
-
 @app.route("/")
 @app.route("/list-compliance-frameworks")
 def list_compliance_frameworks():
@@ -27,7 +24,7 @@ def list_compliance_frameworks():
 
     response = requests.request("GET", url, headers=headers, data=payload)
     resp_json = response.json()
-    print(resp_json)
+    # print(resp_json)
 
     return render_template('compliance.html', results=resp_json)
 
@@ -46,7 +43,7 @@ def list_compliance_reqs(comp_id, request_framework='NotCaught'):
 
     response = requests.request("GET", url, headers=headers, data=payload)
     resp_json = response.json()
-    print(resp_json)
+    # print(resp_json)
 
     return render_template('compliance-reqs.html', results=resp_json, request_framework=request_framework)
 
@@ -65,7 +62,7 @@ def list_compliance_req_sections(req_id, request_requirement='NotCaught'):
 
     response = requests.request("GET", url, headers=headers, data=payload)
     resp_json = response.json()
-    print(resp_json)
+    # print(resp_json)
 
     return render_template('compliance-req-sections.html', results=resp_json, request_requirement=request_requirement)
 
@@ -84,7 +81,7 @@ def list_policies_per_section(sec_id, request_requirement='NotCaught'):
 
     response = requests.request("GET", url, headers=headers, data=payload)
     resp_json = response.json()
-    print(resp_json)
+    # print(resp_json)
 
     return render_template('policies-per-section.html', results=resp_json, sec_id=sec_id,
                            request_requirement=request_requirement)
@@ -104,7 +101,7 @@ def get_policy_detail(policy_id):
 
     response = requests.request("GET", url, headers=headers, data=payload)
     resp_json = response.json()
-    print(resp_json)
+    # print(resp_json)
 
     return render_template('policy-detail.html', results=resp_json)
 

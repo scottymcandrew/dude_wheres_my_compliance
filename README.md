@@ -13,3 +13,10 @@ Also, set your environment variables, because of course, I wasn't silly enough t
 
 .....
 *Geddit??? ;-)
+
+# Install & Run
+
+This is a Python Flask application so you of course need to run this within a Python environment.
+
+- Install the packages in requirements.txt `pip3 install -r requirements.txt`
+- Run the app `python3 ./app.py`
