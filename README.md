@@ -20,3 +20,16 @@ This is a Python Flask application so you of course need to run this within a Py
 
 - Install the packages in requirements.txt `pip3 install -r requirements.txt`
 - Run the app `python3 ./app.py`
+
+# Links and Other Fun Stuff
+
+This app is a front end / client for accessing the Prisma Cloud API.
+If you would like to add functionality or indeed just explore the API, firstly here is the
+[API Reference](https://prisma.pan.dev/api/cloud/)
+
+Even cooler, and this is what I used to make up this awesome app, use [Postman](https://www.postman.com/) and
+download the Prisma Cloud Collection over [here](https://github.com/PaloAltoNetworks/pcs-postman).
+
+**Pro Tip**: On postman, when you make a request to an API, over on the right there's a code button.
+Click that, and it will give you the codified version, for all sorts of languages. Obviously for this
+simply click Python - Requests and you can build functionalty into this app with almost zero coding aptitude!
