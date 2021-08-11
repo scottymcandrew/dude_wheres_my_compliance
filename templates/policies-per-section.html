@@ -11,6 +11,7 @@
             <div class="card-body">
                 <a href="{{ url_for('get_policy_detail', policy_id=r['policyId']) }}"><h5 class="card-title">{{ r['name'] }}</h5></a>
                 <h6 class="card-subtitle mb-2 text-muted">{{ r['description'] }}</h6>
+                <p class="card-text">ENABLED: {{ r['enabled'] }} </p>
                 <p class="card-text">Cloud Type: {{ r['cloudType'] }}</p>
             </div>
         </div>
