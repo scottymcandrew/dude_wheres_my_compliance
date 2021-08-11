@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Dude, Where's the Info on This Policy?{% endblock %}
+
+{% block section_title %}Dude, here's the details of this policy!{% endblock %}
+
+{% block content %}
+
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+                <h5 class="card-title">{{ results['name'] }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ results['description'] }}</h6>
+                <p class="card-text">Severity: {{ results['severity'] }}</p>
+                <p class="card-text">Cloud Type: {{ results['cloudType'] }}</p>
+                <p class="card-text">Standards: {{ results['cloudType'] }}</p>
+                {% for r in results['complianceMetadata'] %}
+                    <p class="card-text">{{ r['standardName'] }}</p>
+                {% endfor %}
+            </div>
+        </div>
+
+{% endblock %}

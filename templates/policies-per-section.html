@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Dude, Where's My Policies Per Compliance Section?{% endblock %}
+
+{% block section_title %}Dude, here's all the policies which are part of Requirement {{ request_requirement }}, Section {{ sec_id }}!{% endblock %}
+
+{% block content %}
+
+    {% for r in results %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <a href="{{ url_for('get_policy_detail', policy_id=r['policyId']) }}"><h5 class="card-title">{{ r['name'] }}</h5></a>
+                <h6 class="card-subtitle mb-2 text-muted">{{ r['description'] }}</h6>
+                <p class="card-text">Cloud Type: {{ r['cloudType'] }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

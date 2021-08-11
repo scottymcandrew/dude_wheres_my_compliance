@@ -2,23 +2,24 @@
 
 {% block title %}Dude, Where's My Compliance Requirement Sections?{% endblock %}
 
+{% block section_title %}Dude, here's all the sections from requirement {{ request_requirement }}!{% endblock %}
+
 {% block content %}
 
-    <div class="row">
+{#    <h3><a href="{{ url_for('list_policies_per_section', sec_id=results[0]['sectionId']) }}">All Policies Under this section</a></h3>#}
 
-        {% for r in results %}
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{ r['description'] }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ r['label'] }}</h6>
-                    <p class="card-text">Policies Assigned: {{ r['policiesAssignedCount'] }}</p>
-                    {% for p in r['associatedPolicyIds'] %}
-                        <a href="#" class="card-link">{{ p }}</a><br>
-                    {% endfor %}
-                </div>
+    {% for r in results %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ r['description'] }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ r['label'] }}</h6>
+                <p class="card-text">Policies Assigned: {{ r['policiesAssignedCount'] }}</p>
+                <a href="{{ url_for('list_policies_per_section', sec_id=r['sectionId'], request_requirement=r['requirementName']) }}" class="card-link">Policies Under this Section</a><br>
+{#                {% for p in r['associatedPolicyIds'] %}#}
+{#                    <a href="{{ r['sectionId'] }}" class="card-link">{{ p }}</a><br>#}
+{#                {% endfor %}#}
             </div>
-        {% endfor %}
-
-    </div>
+        </div>
+    {% endfor %}
 
 {% endblock %}

@@ -2,9 +2,9 @@
 
 {% block title %}Dude, Where's My Compliance Standards?{% endblock %}
 
-{% block content %}
+{% block section_title %}Dude, here's all the current Prisma Cloud Compliance Frameworks!{% endblock %}
 
-    <div class="row">
+{% block content %}
 
         {% for r in results %}
             <div class="card" style="width: 18rem;">
@@ -13,11 +13,9 @@
                     <h6 class="card-subtitle mb-2 text-muted">{{ r['createdBy'] }}</h6>
                     <p class="card-text">Cloud Types: {{ r['cloudType'] }}</p>
                     <p class="card-text">Policies Assigned: {{ r['policiesAssignedCount'] }}</p>
-                    <a href="{{ url_for('list_compliance_reqs', comp_id=r.id) }}" class="card-link">Requirements</a>
+                    <a href="{{ url_for('list_compliance_reqs', comp_id=r.id, request_framework=r['name']) }}" class="card-link">Requirements</a>
                 </div>
             </div>
         {% endfor %}
-
-    </div>
 
 {% endblock %}
