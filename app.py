@@ -4,7 +4,9 @@ import requests
 import json
 
 app = Flask(__name__)
-pc_base_url = "https://api.eu.prismacloud.io"
+# pc_base_url = "https://api.eu.prismacloud.io"
+# SET THIS TO YOUR TENANT'S API URL: https://prisma.pan.dev/api/cloud/api-urls
+pc_base_url = os.environ.get('PC_API_EP')
 pc_access_key = os.environ.get('PC_KEY')
 pc_secret_key = os.environ.get('PC_SECRET')
 

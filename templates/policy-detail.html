@@ -14,7 +14,7 @@
                 <p class="card-text">Cloud Type: {{ results['cloudType'] }}</p>
                 <p class="card-text">Standards: {{ results['cloudType'] }}</p>
                 {% for r in results['complianceMetadata'] %}
-                    <p class="card-text">{{ r['standardName'] }}</p>
+                    <a href="{{ url_for('list_compliance_reqs', ) }}"><p class="card-text">{{ r['standardName'] }}</p></a>
                 {% endfor %}
             </div>
         </div>

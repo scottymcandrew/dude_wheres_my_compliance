@@ -11,6 +11,10 @@ Also, set your environment variables, because of course, I wasn't silly enough t
 `export PC_KEY='blah'`
 `export PC_SECRET='blahblah'`
 
+[Include your API endpoint]
+(https://prisma.pan.dev/api/cloud/api-urls):
+`export PC_API_EP='https://api.eu.prismacloud.io'`
+
 .....
 *Geddit??? ;-)
 
